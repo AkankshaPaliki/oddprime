@@ -1,20 +1,21 @@
-
-const numbers=[];
+//assigning starting and ending value
+let strnum=1
+let endnum=10000000
 /**
  * helper function to check whether the given numbers 
  * @param {*} num 
  */
-function arraylist(num){
-    let arr = Array.from(num.toString(), Number);//to convert string to array of elements
-        for(let j=0;j<arr.length;j++){
-            // to check the difference
-            if(Math.abs(parseInt(arr[j+1]))-Math.abs(parseInt(arr[j]))==1){ 
-                return true;
-            }
-        }
-    
-    return false;
-}
+function arraylist(number) {
+    const numstr = number.toString();
+    for (let i = 0; i < numstr.length - 1; i++) {
+      const num1 = parseInt(numstr[i]);
+      const num2 = parseInt(numstr[i + 1]);
+      if (Math.abs(num1 - num2) !== 1) {
+        return false;
+      }
+    }
+    return true;
+  }
 /**
  * helper function to check whether the number is prime or not.
  * @param {*} num const isPrime = (number) => {
@@ -36,20 +37,14 @@ function prime(num){
  * @param {*} start  
  * 
  */
-function iterate_range(start,end){
-
-    for(let i=0;i<=end;i++){
-        if(prime(i) && arraylist(i) == true){
-            //if the number is prime all the number will be pushed into array
-            numbers.push(i);
-            
-        }
+function oddprime(strnum, endnum) {
+    for (let i = strnum; i <= endnum; i++) {
+      if (arraylist(i) && prime(i)) {
+        console.log(i);
+      }
     }
+  }
+function main(){
+
 }
-//iteration range from n1 to n2
-iterate_range(1,1000000);
-console.log(numbers);
-function main(){ 
-    prime()
-}
-main()
+oddprime(strnum,endnum);
